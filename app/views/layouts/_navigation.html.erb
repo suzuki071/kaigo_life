@@ -1,0 +1,29 @@
+<nav class="">
+  <!-- ロゴ -->
+  <div class="">
+    <%= link_to "KaigoLife", root_path, class:"" %>
+  </div>
+
+  <div class="">
+    <ul>
+    <% if user_signed_in? %>
+      <li><%= link_to "投稿一覧", reports_path, class:"" %></li>
+      <li><%= link_to "質問一覧", questions_path, class:"" %></li>
+      <li><%= link_to "マイページ", user_path(current_user), class:"" %></li>
+      <li><%= link_to "お問い合わせ", inquiry_index_path, class:"" %></li>
+      <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+      <li>
+        <%= form_with url: search_reports_path, method: :get, local: true do |f| %>
+          <%= f.text_field :keyword %>
+          <%= f.submit "検索" %>
+        <% end %>
+      </li>
+    <% else %>
+      <li><%= link_to "投稿一覧", reports_path, class:"" %></li>
+      <li><%= link_to "質問一覧", questions_path, class:"" %></li>
+      <li><%= link_to "新規登録", new_user_registration_path, class:"" %></li>
+      <li><%= link_to "ログイン", new_user_session_path, class:"" %></li>
+    <% end %>
+    </ul>
+  </div>
+</nav>

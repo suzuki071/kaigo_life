@@ -1,0 +1,32 @@
+<%= form_with model: @inquiry, url: inquiry_confirm_path, local: true do |inquiry| %>
+<div>
+  <h1>お問い合わせ</h1>
+  
+  <% if @inquiry.errors.any? %>
+    <strong>入力内容にエラーがあります</strong>
+    <ul>
+      <% @inquiry.errors.each do |attr, msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  
+  <div>
+    <table>
+      <tr>
+        <th>名前<span>(必須)</span></th>
+        <td><%= inquiry.text_field :name %></td>
+      </tr>
+      <tr>
+        <th>メールアドレス<span>(必須)</span></th>
+        <td><%= inquiry.text_field :email %></td>
+      </tr>
+      <tr>
+        <th>お問い合わせ内容</th>
+        <td><%= inquiry.text_area :message %></td>
+      </tr>
+    </table>
+    <%= inquiry.submit '確認', class: '' %>
+  </div>
+</div>
+<% end %>

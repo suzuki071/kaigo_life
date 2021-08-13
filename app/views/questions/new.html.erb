@@ -1,0 +1,16 @@
+<h1>新規質問</h1>
+<%= form_with model:@question, local:true do |question| %>
+  <div>
+    <lavel>タイトル</lavel>
+    <%= question.text_field :title, class:"" %>
+  </div>
+  
+  <div>
+    <lavel>本文</lavel>
+    <%= question.text_area :body, class:"" %>
+  </div>
+  
+  <div>
+    <%= question.submit '投稿する', class:"" %>
+  </div>
+<% end %>

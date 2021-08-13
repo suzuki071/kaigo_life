@@ -1,0 +1,22 @@
+<h1>投稿編集</h1>
+<%= form_with model:@report, local:true do |report| %>
+<div>
+  <div>
+    <label>タイトル</label>
+    <div>
+      <%= report.text_field :title %>
+    </div>
+  </div>
+  
+  <div>
+    <label>本文</label>
+    <div>
+      <%= report.text_area :body %>
+    </div>
+  </div>
+  
+  <div>
+    <%= report.submit '更新', class:"" %>
+  </div>
+</div>
+<% end %>

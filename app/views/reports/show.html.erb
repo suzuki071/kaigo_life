@@ -1,0 +1,16 @@
+<h1>投稿詳細</h1>
+<div>
+  <div>
+    <%= @report.title %>
+  </div>
+  <div>
+    <%= @report.body %>
+  </div>
+</div>
+
+<div>
+  <%= link_to '編集', edit_report_path(@report.id), class:"" %>
+</div>
+<div>
+  <%= link_to '削除', report_path(@report.id), method: :delete, class:"" %>
+</div>

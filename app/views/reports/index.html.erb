@@ -1,0 +1,16 @@
+<h1>投稿一覧</h1>
+<div>
+  <%= link_to "新規記事作成", new_report_path, class:"" %>
+</div>
+
+<!-- 投稿一覧 -->
+<div>
+  <% @reports.each do |reports| %>
+  <div>
+    <%= link_to reports.title, report_path(reports.id) %>
+  </div>
+  <div>
+    <p><%= reports.body %></p>
+  </div>
+  <% end %>
+</div>

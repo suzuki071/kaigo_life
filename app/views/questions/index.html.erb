@@ -1,0 +1,16 @@
+<h1>質問一覧</h1>
+<div>
+  <%= link_to "新規質問作成", new_question_path, class:"" %>
+</div>
+
+<!-- 質問一覧 -->
+<div>
+  <% @questions.each do |questions| %>
+  <div>
+    <%= link_to questions.title, question_path(questions.id) %>
+  </div>
+  <div>
+    <p><%= questions.body %></p>
+  </div>
+  <% end %>
+</div>

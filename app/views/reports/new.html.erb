@@ -1,0 +1,16 @@
+<h1>新規投稿</h1>
+<%= form_with model:@report, local:true do |report| %>
+  <div>
+    <lavel>タイトル</lavel>
+    <%= report.text_field :title, class:"" %>
+  </div>
+  
+  <div>
+    <lavel>本文</lavel>
+    <%= report.text_area :body, class:"" %>
+  </div>
+  
+  <div>
+    <%= report.submit '投稿する', class:"" %>
+  </div>
+<% end %>
