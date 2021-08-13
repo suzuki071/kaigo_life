@@ -1,0 +1,7 @@
+<div>
+  <% if current_user.liked_by?(report.id) %>
+    <strong><%= link_to 'ハート', destroy_like_path(report), method: :DELETE, remote: true %> <%= report.likes.count %></strong>
+  <% else %>
+    <strong><%= link_to '♡', create_like_path(report), method: :POST, remote: true %> <%= report.likes.count %></strong>
+  <% end %>
+</div>

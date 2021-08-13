@@ -5,12 +5,15 @@
 
 <!-- 投稿一覧 -->
 <div>
-  <% @reports.each do |reports| %>
+  <% @reports.each do |report| %>
   <div>
-    <%= link_to reports.title, report_path(reports.id) %>
+    <%= link_to report.title, report_path(report.id) %>
   </div>
   <div>
-    <p><%= reports.body %></p>
+    <p><%= report.body %></p>
+  </div>
+  <div id="report_<%= report.id %>">
+    <%= render 'report', report: report %>
   </div>
   <% end %>
 </div>

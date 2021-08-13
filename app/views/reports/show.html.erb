@@ -6,6 +6,10 @@
   <div>
     <%= @report.body %>
   </div>
+
+  <div id="report_<%= @report.id %>">
+    <%= render 'report', report: @report %>
+  </div>
 </div>
 
 <div>
