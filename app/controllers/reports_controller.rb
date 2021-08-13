@@ -53,6 +53,10 @@ class ReportsController < ApplicationController
     end
   end
   
+  def rank
+    @all_ranks = Report.create_all_ranks
+  end
+  
   private
   
   def report_params

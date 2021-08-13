@@ -1,0 +1,19 @@
+<h1>投稿ランキング</h1>
+<div>
+  <%= link_to "新規記事作成", new_report_path, class:"" %>
+</div>
+
+<!-- ランキング一覧 -->
+<div>
+  <% @all_ranks.each do |rank| %>
+  <div>
+    <%= link_to rank.title, report_path(rank.id) %>
+  </div>
+  <div>
+    <p><%= rank.body %></p>
+  </div>
+  <div id="report_<%= rank.id %>">
+    <%= render 'report', report: rank %>
+  </div>
+  <% end %>
+</div>

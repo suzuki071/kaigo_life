@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resources :reports, only: [:new, :index, :create, :show, :edit, :update, :destroy] do
     collection do
       get 'search'
+      get 'rank'
     end
   end
 
