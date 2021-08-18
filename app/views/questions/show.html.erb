@@ -21,7 +21,7 @@
       <span class="post__head--right">更新日：<%= @question.updated_at.strftime('%Y/%m/%d') %></span>
     </div>
 
-    <div class="post__body">
+    <div class="post__body question__body">
       <%= safe_join(@question.body.split("\n"),tag(:br))%>
     </div>
     <!-- questionここまで -->

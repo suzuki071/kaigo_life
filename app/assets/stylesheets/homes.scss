@@ -8,7 +8,9 @@
   padding: 200px 0;
   // background-color: red;
   background-image: url(top3.png);
-  background-size:  cover;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 
   &__header {
     width: 30%;
@@ -35,7 +37,7 @@
   &__btn {
     text-decoration: none;
     color: #fff;
-    background-color: #4676D7;
+    background-color: #0066ff;
     border-radius: 100vh;
     padding: 8px 16px;
     margin-left: 20px;
