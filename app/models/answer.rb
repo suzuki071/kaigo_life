@@ -1,7 +1,7 @@
 class Answer < ApplicationRecord
-  
+
   belongs_to :question
   belongs_to :user
-  # attachment :image
-  
+  attachment :answer_image
+
 end

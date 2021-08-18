@@ -1,29 +1,27 @@
-<nav class="">
+<nav class="header__nav">
   <!-- ロゴ -->
-  <div class="">
-    <%= link_to "KaigoLife", root_path, class:"" %>
+  <div class="header__logo">
+    <%= link_to "KaigoLife", root_path, class:"header__link fas fa-home" %>
   </div>
 
-  <div class="">
-    <ul>
+  <div class="header__menu">
     <% if user_signed_in? %>
-      <li><%= link_to "投稿一覧", reports_path, class:"" %></li>
-      <li><%= link_to "質問一覧", questions_path, class:"" %></li>
-      <li><%= link_to "マイページ", user_path(current_user), class:"" %></li>
-      <li><%= link_to "お問い合わせ", inquiry_index_path, class:"" %></li>
-      <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-      <li>
+      <div class="header__list"><%= link_to "Q&A一覧", questions_path, class:"header__link" %></div>
+      <div class="header__list"><%= link_to "投稿一覧", reports_path, class:"header__link" %></div>
+      <div class="header__list"><%= link_to "マイページ", user_path(current_user), class:"header__link" %></div>
+      <div class="header__list"><%= link_to "お問い合わせ", inquiry_index_path, class:"header__link" %></div>
+      <div class="header__list"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"header__link" %></div>
+      <div class="header__list">
         <%= form_with url: search_reports_path, method: :get, local: true do |f| %>
           <%= f.text_field :keyword %>
           <%= f.submit "検索" %>
         <% end %>
-      </li>
+      </div>
     <% else %>
-      <li><%= link_to "投稿一覧", reports_path, class:"" %></li>
-      <li><%= link_to "質問一覧", questions_path, class:"" %></li>
-      <li><%= link_to "新規登録", new_user_registration_path, class:"" %></li>
-      <li><%= link_to "ログイン", new_user_session_path, class:"" %></li>
+      <div class="header__list"><%= link_to "Q&A一覧", questions_path, class:"header__link" %></div>
+      <div class="header__list"><%= link_to "投稿一覧", reports_path, class:"header__link" %></div>
+      <div class="header__list"><%= link_to "新規登録", new_user_registration_path, class:"header__link" %></div>
+      <div class="header__list"><%= link_to "ログイン", new_user_session_path, class:"header__link" %></div>
     <% end %>
-    </ul>
   </div>
 </nav>

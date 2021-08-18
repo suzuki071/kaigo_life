@@ -4,13 +4,32 @@
     <lavel>タイトル</lavel>
     <%= question.text_field :title, class:"" %>
   </div>
-  
+
   <div>
     <lavel>本文</lavel>
     <%= question.text_area :body, class:"" %>
   </div>
-  
+
   <div>
     <%= question.submit '投稿する', class:"" %>
   </div>
+<% end %>
+
+<div class="top">
+  <h2 class="top__title">質問作成</h2>
+</div>
+
+<%= form_with model:@question, local:true do |question| %>
+<div class="area">
+  <div class="edit">
+    <div class="edit__item">
+      <label class="edit__label">質問文</label>
+      <div><%= question.text_area :body, class: "edit__body", wrap:"hard" %></div>
+    </div>
+
+    <div class="edit__item">
+      <%= question.submit '質問投稿', class:"edit__btn" %>
+    </div>
+  </div>
+</div>
 <% end %>

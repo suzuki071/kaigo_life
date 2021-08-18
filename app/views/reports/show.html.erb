@@ -1,20 +1,40 @@
-<h1>投稿詳細</h1>
-<div>
-  <div>
-    <%= @report.title %>
+<% if @report.user_id == current_user.id %>
+  <div class="top">
+    <div class="top__item btn">
+      <%= link_to '編集', edit_report_path(@report.id), class:"top__text" %>
+    </div>
+    <div class="top__item btn">
+      <%= link_to '削除', report_path(@report.id), method: :delete, class:"top__text" %>
+    </div>
   </div>
-  <div>
-    <%= @report.body %>
+<% else %>
+<% end %>
+
+<div class="area">
+  <div class="post">
+    <div class="post__head">
+      <div class="post__head--trim">
+        <%= attachment_image_tag @report.user, :profile_image, fallback: "no_image.jpg", class:"post__head--trim-img"; %>
+      </div>
+      <span class="post__head--left"><%= @report.user.name %></span>
+      <span class="post__head--right">更新：<%= @report.updated_at.strftime('%Y/%m/%d') %></span>
+    </div>
+
+    <div class="post__title">
+      <%= @report.title %>
+    </div>
+
+    <div class="post__body">
+      <%= safe_join(@report.body.split("\n"),tag(:br))%>
+    </div>
+
   </div>
 
-  <div id="report_<%= @report.id %>">
-    <%= render 'report', report: @report %>
+  <div class="post__unit">
+    <p>いいね！</p>
+    <div id="report_<%= @report.id %>">
+      <span class="post__like"><%= render 'report', report: @report %></span>
+    </div>
   </div>
-</div>
 
-<div>
-  <%= link_to '編集', edit_report_path(@report.id), class:"" %>
-</div>
-<div>
-  <%= link_to '削除', report_path(@report.id), method: :delete, class:"" %>
 </div>

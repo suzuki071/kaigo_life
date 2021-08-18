@@ -1,19 +1,38 @@
-<h1>投稿ランキング</h1>
-<div>
-  <%= link_to "新規記事作成", new_report_path, class:"" %>
+<div class="top">
+  <div class="top__item btn">
+    <%= link_to "ランキング順", rank_reports_path, class:"top__text" %>
+  </div>
+  <div class="top__item btn">
+    <%= link_to "新着順", reports_path, class:"top__text" %>
+  </div>
+  <div class="top__item top__item--right">
+    <%= link_to " ➕ ", new_report_path, class:"top__btn" %>
+  </div>
 </div>
 
-<!-- ランキング一覧 -->
-<div>
+<!-- 投稿一覧 -->
+<div class="area">
   <% @all_ranks.each do |rank| %>
-  <div>
-    <%= link_to rank.title, report_path(rank.id) %>
-  </div>
-  <div>
-    <p><%= rank.body %></p>
-  </div>
-  <div id="report_<%= rank.id %>">
-    <%= render 'report', report: rank %>
-  </div>
+    <div class="note">
+      <div class="note__head">
+        <%= link_to rank.title, report_path(rank.id), class: "note__title" %>
+      </div>
+
+      <div class="note__main">
+        <%= truncate(rank.body, omission: '...', separator: ' ') %>
+      </div>
+
+      <div class="note__foot">
+        <div id="report_<%= rank.id %>" class="note__foot-left">
+          <%= render 'report', report: rank %>
+        </div>
+        <div class="note__foot-center">
+          <span class="note__name"><%= rank.user.name %></span>
+        </div>
+        <div class="note__foot-right">
+          <span class="note__date"><%= rank.user.created_at.strftime('%Y/%m/%d') %></span>
+        </div>
+      </div>
+    </div>
   <% end %>
 </div>

@@ -1,22 +1,25 @@
-<h1>投稿編集</h1>
+<div class="top">
+  <div class="top__item btn">
+    <%= link_to 'Back', report_path(@report.id), class:"top__text" %>
+  </div>
+</div>
+
 <%= form_with model:@report, local:true do |report| %>
-<div>
-  <div>
-    <label>タイトル</label>
-    <div>
-      <%= report.text_field :title %>
+<div class="area">
+  <div class="edit">
+  <div class="edit__item">
+      <label class="edit__label">タイトル</label>
+      <%= report.text_field :title, class: "edit__text" %>
     </div>
-  </div>
-  
-  <div>
-    <label>本文</label>
-    <div>
-      <%= report.text_area :body %>
+
+    <div class="edit__item">
+      <label class="edit__label">本文</label>
+      <div><%= report.text_area :body, class: "edit__body", wrap:"hard" %></div>
     </div>
-  </div>
-  
-  <div>
-    <%= report.submit '更新', class:"" %>
+
+    <div class="edit__item">
+      <%= report.submit '更新', class:"edit__btn" %>
+    </div>
   </div>
 </div>
 <% end %>

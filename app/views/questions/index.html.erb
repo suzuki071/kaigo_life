@@ -1,16 +1,35 @@
-<h1>質問一覧</h1>
-<div>
-  <%= link_to "新規質問作成", new_question_path, class:"" %>
+<div class="top">
+  <div class="top__item btn">
+    <%= link_to "質問作成", new_question_path, class:"top__text" %>
+  </div>
 </div>
 
 <!-- 質問一覧 -->
-<div>
-  <% @questions.each do |questions| %>
-  <div>
-    <%= link_to questions.title, question_path(questions.id) %>
-  </div>
-  <div>
-    <p><%= questions.body %></p>
-  </div>
+<div class="area">
+  <% @questions.each do |question| %>
+    <div class="note">
+      <div class="note__head">
+        <% if question.answers.count > 0 %>
+          <p>回答<span class="count"><%= question.answers.count %></span>件</p>
+        <% else %>
+          <p>回答<span class="count"><%= question.answers.count %></span>件</p>
+        <% end %>
+      </div>
+
+      <div class="note__main">
+        <%= link_to truncate(question.body, omission: '...', separator: ' '), question_path(question.id), class: "note__title" %>
+      </div>
+
+      <div class="note__foot">
+        <div class="note__foot-left">
+          <span class="note__name">
+            <%= question.user.name %>
+          </span>
+        </div>
+        <div class="note__foot-right">
+          <span class="note__date"><%= question.updated_at.strftime('%Y/%m/%d') %></span>
+        </div>
+      </div>
+    </div>
   <% end %>
 </div>

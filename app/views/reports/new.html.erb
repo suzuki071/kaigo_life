@@ -1,16 +1,23 @@
-<h1>新規投稿</h1>
+<div class="top">
+  <h2 class="top__title">新規投稿</h2>
+</div>
+
 <%= form_with model:@report, local:true do |report| %>
-  <div>
-    <lavel>タイトル</lavel>
-    <%= report.text_field :title, class:"" %>
+<div class="area">
+  <div class="edit">
+  <div class="edit__item">
+      <label class="edit__label">タイトル</label>
+      <%= report.text_field :title, class: "edit__text" %>
+    </div>
+
+    <div class="edit__item">
+      <label class="edit__label">本文</label>
+      <div><%= report.text_area :body, class: "edit__body", wrap:"hard" %></div>
+    </div>
+
+    <div class="edit__item">
+      <%= report.submit '投稿', class:"edit__btn" %>
+    </div>
   </div>
-  
-  <div>
-    <lavel>本文</lavel>
-    <%= report.text_area :body, class:"" %>
-  </div>
-  
-  <div>
-    <%= report.submit '投稿する', class:"" %>
-  </div>
+</div>
 <% end %>

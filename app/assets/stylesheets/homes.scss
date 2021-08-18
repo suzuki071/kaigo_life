@@ -1,3 +1,43 @@
 // Place all the styles related to the homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.container {
+  width: 100%;
+  height: 1000px;
+  padding: 200px 0;
+  // background-color: red;
+  background-image: url(top3.png);
+  background-size:  cover;
+
+  &__header {
+    width: 30%;
+    height: 100px;
+    margin: 0 auto;
+    font-size: 20px;
+    text-align: center;
+    padding: 30px 0;
+    background:rgba(192,192,192,0.3);
+    // background-color: blue;
+  }
+
+  &__link {
+    width: 30%;
+    height: 100px;
+    margin: 0 auto;
+    font-size: 18px;
+    text-align: center;
+    padding: 30px 0;
+    background:rgba(192,192,192,0.5);
+    // background-color: green;
+  }
+
+  &__btn {
+    text-decoration: none;
+    color: #fff;
+    background-color: #4676D7;
+    border-radius: 100vh;
+    padding: 8px 16px;
+    margin-left: 20px;
+  }
+}
