@@ -1,13 +1,14 @@
-<% if @question.user_id == current_user.id %>
-  <div class="top">
-    <div class="top__item btn">
-      <%= link_to '編集', edit_question_path(@question.id), class:"top__text" %>
+<% if user_signed_in? %>
+  <% if @question.user_id == current_user.id %>
+    <div class="top">
+      <div class="top__item btn">
+        <%= link_to '編集', edit_question_path(@question.id), class:"top__text" %>
+      </div>
+      <div class="top__item btn">
+        <%= link_to '削除', question_path(@question.id), method: :delete, class:"top__text" %>
+      </div>
     </div>
-    <div class="top__item btn">
-      <%= link_to '削除', question_path(@question.id), method: :delete, class:"top__text" %>
-    </div>
-  </div>
-<% else %>
+  <% end %>
 <% end %>
 
 <div class="area">
@@ -17,7 +18,9 @@
       <div class="post__head--trim">
         <%= attachment_image_tag @question.user, :profile_image, fallback: "no_image.jpg", class:"post__head--trim-img"; %>
       </div>
-      <span class="post__head--left"><%= @question.user.name %> さんの質問</span>
+      <span class="post__head--left">
+        <%= link_to @question.user.name, user_path(@question.user.id), class: "note__name-link" %> さんの質問
+      </span>
       <span class="post__head--right">更新日：<%= @question.updated_at.strftime('%Y/%m/%d') %></span>
     </div>
 
@@ -32,7 +35,9 @@
         <div class="post__head--trim">
           <%= attachment_image_tag answer.user, :profile_image, fallback: "no_image.jpg", class:"post__head--trim-img"; %>
         </div>
-        <span class="post__head--left"><%= answer.user.name %> さんの回答</span>
+        <span class="post__head--left">
+          <%= link_to answer.user.name, user_path(answer.user.id), class: "note__name-link" %> さんの回答
+        </span>
         <span class="post__head--right">回答日：<%= answer.updated_at.strftime('%Y/%m/%d') %></span>
       </div>
 

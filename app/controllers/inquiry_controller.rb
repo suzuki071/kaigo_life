@@ -1,4 +1,6 @@
 class InquiryController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :confirm, :thanks]
+  
   def index
     @inquiry = Inquiry.new
     render :action => 'index'

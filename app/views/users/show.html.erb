@@ -12,7 +12,7 @@
   <div class="user-info">
     <div class="user-info__icon">
       <div class="user-info__icon--trim">
-        <%= attachment_image_tag @user, :profile_image, fallback: "no_image.jpg", class:"user-info--trim-img" %>
+        <%= attachment_image_tag @user, :profile_image, format: 'jpeg',fallback: "no_image.jpg", class:"user-info--trim-img", size:"100x100" %>
       </div>
     </div>
 
@@ -22,16 +22,17 @@
         <li class="user-info__list"><%= @user.introduction %></li>
         <li class="user-info__list user-info__follow">
           <div class="user-info__follow--follower">
-            <%= link_to followers_user_path(@user.id) do %>
-              <p>フォロワー<%= @user.followers.count %>人</p>
+            <%= link_to followers_user_path(@user.id), class:"user-info__link" do %>
+              <span>フォロワー<%= @user.followers.count %>人</span>
             <% end %>
           </div>
           <div class="user-info__follow--follow">
-            <%= link_to following_user_path(@user.id) do %>
-              <p>フォロー<%= @user.following.count %>人</p>
+            <%= link_to followings_user_path(@user.id), class:"user-info__link" do %>
+              <span>フォロー<%= @user.following.count %>人</span>
             <% end %>
           </div>
         </li>
+        <li class="user-info__list"><%= render "follow_form", user:@user %></li>
       </ul>
     </div>
   </div>

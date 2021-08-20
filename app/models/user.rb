@@ -9,16 +9,16 @@ class User < ApplicationRecord
   has_many :answers, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-  has_many :following_relationships, foreign_key: "follower_id", class_name: "Relationship", dependent: :destroy
-  has_many :following, through: :following_relationships
-  has_many :follower_relationships, foreign_key: "following_id", class_name: "Relationship", dependent: :destroy
-  has_many :followers, through: :follower_relationships
-
-  attachment :profile_image
-
   def liked_by?(report_id)
     likes.where(report_id: report_id).exists?
   end
+
+  attachment :profile_image
+
+  has_many :following_relationships, foreign_key: "follower_id", class_name: "Relationship",  dependent: :destroy
+  has_many :following, through: :following_relationships
+  has_many :follower_relationships, foreign_key: "following_id", class_name: "Relationship", dependent: :destroy
+  has_many :followers, through: :follower_relationships
 
   #フォローしているかを確認するメソッド
   def following?(user)

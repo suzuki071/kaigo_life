@@ -28,7 +28,7 @@
         </div>
         <div class="note__foot-center">
           <span class="note__name">
-            <%= report.user.name %>
+            <%= link_to report.user.name, user_path(report.user.id), class: "note__name-link" %>
           </span>
         </div>
         <div class="note__foot-right">

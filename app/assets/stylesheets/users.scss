@@ -53,13 +53,14 @@
 }
 
 .user-info {
-  height: 200px;
+  height: auto;
   display: flex;
   align-items: center;
   border-bottom: 1px solid #ddd;
 
   &__icon {
     width: 400px;
+    height: 200px;
 
     &--trim {
       position: relative;
@@ -67,6 +68,7 @@
       width: 100px;
       height: 100px;
       border-radius: 50%;
+      margin-top: 50px;
       margin-left: auto;
       margin-right: auto;
       border: 1px solid #ddd;
@@ -84,7 +86,8 @@
   }
 
   &__text {
-
+    width: 380px;
+    margin-top: 10px;
   }
 
   &__list {
@@ -97,12 +100,87 @@
     display: flex;
 
     &--follower {
-      margin-right: 30px;
+      margin-right: 10px;
     }
 
     &--follow {
 
     }
   }
+
+  &__link {
+    text-decoration: none;
+    display: inline-block;
+    padding: 0.5em 1em;
+    background-color: #fff;/*ボタン色*/
+    color: #000;
+    border: solid 1px #000;
+    border-radius: 10px;
+  }
+
+  &__link:hover {
+    background-color: #eee;/*ボタン色*/
+  }
 }
 
+.follow-user {
+  width: 80%;
+  height: 60px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  border-bottom: solid 1px #ddd;
+
+  &__left {
+    margin-right: 20px;
+  }
+
+  &__img {
+    width: 40px;
+    height: 40px;
+    margin-top: 10px;
+  }
+
+  &__center {
+    text-decoration: none;
+  }
+
+  &__name {
+    text-decoration: none;
+    color: #000;
+  }
+
+  &__name:hover {
+    color: #0066ff;
+  }
+
+  &__right {
+    margin-left: auto;
+  }
+
+  &__btn-blue {
+    display: inline-block;
+    padding: 0.5em 1em;
+    background-color: #0066ff;/*ボタン色*/
+    color: #FFF;
+    border: none;
+    border-radius: 10px;
+  }
+
+  &__btn-blue:hover {
+    background-color: #0055ff;/*ボタン色*/
+  }
+
+  &__btn-red {
+    display: inline-block;
+    padding: 0.5em 1em;
+    background-color: #cc342d;/*ボタン色*/
+    color: #FFF;
+    border: none;
+    border-radius: 10px;
+  }
+
+  &__btn-red:hover {
+    background-color: #cc122d;/*ボタン色*/
+  }
+}

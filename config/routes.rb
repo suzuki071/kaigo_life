@@ -8,14 +8,17 @@ Rails.application.routes.draw do
   get 'about' => 'homes#about'
 
   # usersコントローラのルーティング
-  resources :users, only: [:show, :edit, :update] do
+  resources :users do
     member do
-      get :following, :followers
+      get :followings, :followers
     end
   end
 
   # relationshipsコントローラのルーティング
-  resources :relationships, only: [:create, :destroy]
+  resources :relationships, only: [:create, :destroy] do
+    get :followings, on: :member
+    get :followers, on: :member
+  end
 
   # reportsコントローラのルーティング
   resources :reports, only: [:new, :index, :create, :show, :edit, :update, :destroy] do

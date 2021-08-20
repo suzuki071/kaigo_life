@@ -106,6 +106,15 @@
   &__foot-right {
     margin-left: 20px;
   }
+
+  &__name-link {
+    text-decoration: none;
+    color: #000;
+  }
+
+  &__name-link:hover {
+    color: #0066ff;
+  }
 }
 // ここまで
 
@@ -171,6 +180,17 @@
 
   &__body {
     padding: 1rem 2rem;
+  }
+
+  &__body-top {
+    width: 600px;
+    margin: 0 auto;
+  }
+
+  &__body-img {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
   }
 
   &__unit {

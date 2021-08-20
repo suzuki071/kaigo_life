@@ -1,4 +1,5 @@
 class ReportsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :edit]
 
   def index
     @reports = Report.all
@@ -15,7 +16,9 @@ class ReportsController < ApplicationController
       flash[:notice] = "投稿しました！"
       redirect_to report_path(@report.id)
     else
-      render 'index'
+      @reports = Report.new
+      flash[:alert] = "投稿に失敗しました！"
+      render 'new'
     end
 
   end
@@ -26,6 +29,10 @@ class ReportsController < ApplicationController
 
   def edit
     @report = Report.find(params[:id])
+    if @report.user_id == current_user.id
+    else
+      redirect_to reports_path, alert: '不正なアクセスです。'
+    end
   end
 
   def update
@@ -60,7 +67,7 @@ class ReportsController < ApplicationController
   private
 
   def report_params
-    params.require(:report).permit(:title, :body, :user_id, :report_image_id)
+    params.require(:report).permit(:title, :body, :user_id, :report_image)
   end
 
 end

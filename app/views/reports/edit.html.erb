@@ -13,6 +13,11 @@
     </div>
 
     <div class="edit__item">
+      <label class="edit__label">投稿画像</label>
+      <%= report.attachment_field :report_image, class: "edit__text" %>
+    </div>
+
+    <div class="edit__item">
       <label class="edit__label">本文</label>
       <div><%= report.text_area :body, class: "edit__body", wrap:"hard" %></div>
     </div>

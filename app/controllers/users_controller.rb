@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
 
   def show
     @user = User.find(params[:id])
@@ -18,22 +19,20 @@ class UsersController < ApplicationController
     end
   end
 
-  def following
-    @user = User.find(params[:id])
-    @users = @user.following
-    render 'show'
+  def followings
+    user = User.find(params[:id])
+    @users = user.following
   end
 
   def followers
-    @user = User.find(params[:id])
-    @users = @user.followers
-    render 'show'
+    user = User.find(params[:id])
+    @users = user.followers
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :introduction, :profile_image_id)
+    params.require(:user).permit(:name, :introduction, :profile_image)
   end
 
 end

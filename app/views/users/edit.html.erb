@@ -8,6 +8,11 @@
 <div class="area">
   <div class="edit">
     <div class="edit__item">
+      <label class="edit__label">ユーザ画像</label>
+      <%= user.attachment_field :profile_image, class: "edit__text" %>
+    </div>
+
+    <div class="edit__item">
       <label class="edit__label">ユーザ名</label>
       <%= user.text_field :name, class: "edit__text" %>
     </div>
