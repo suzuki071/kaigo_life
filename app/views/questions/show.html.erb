@@ -1,45 +1,73 @@
-<h1>質問詳細</h1>
-<!-- questionここから -->
-<div>
-  <div>
-    <div>
-      <%= @question.title %>
-    </div>
-    <div>
-      <%= @question.body %>
-    </div>
-  </div>
-
-  <div>
-    <%= link_to '編集', edit_question_path(@question.id), class:"" %>
-  </div>
-  <div>
-    <%= link_to '削除', question_path(@question.id), method: :delete, class:"" %>
-  </div>
-</div>
-<!-- questionここまで -->
-
-<!-- answerここから -->
-<div>
-  <h3>回答</h3>
-  <% @question.answers.each do |answer| %>
-    <div>
-      <%= answer.user.name %><%= answer.created_at.strftime('%Y/%m/%d') %>
-      <%= answer.body %>
-    </div>
-    <div>
-      <% if answer.user == current_user %>
-        <%= link_to "削除", question_answer_path(answer.question, answer), method: :delete %>
-      <% end %>
+<% if user_signed_in? %>
+  <% if @question.user_id == current_user.id %>
+    <div class="top">
+      <div class="top__item btn">
+        <%= link_to '編集', edit_question_path(@question.id), class:"top__text" %>
+      </div>
+      <div class="top__item btn">
+        <%= link_to '削除', question_path(@question.id), method: :delete, class:"top__text" %>
+      </div>
     </div>
   <% end %>
+<% end %>
 
-  <h3>回答作成</h3>
-  <div>
-    <%= form_with(model:[@question, @answer], local:true) do |f| %>
-      <%= f.text_area :body, rows:'5',placeholder: "回答をここに" %>
-      <%= f.submit "回答する" %>
+<div class="area">
+  <div class="post">
+    <!-- questionここから -->
+    <div class="post__head">
+      <div class="post__head--trim">
+        <%= attachment_image_tag @question.user, :profile_image, fallback: "no_image.jpg", class:"post__head--trim-img"; %>
+      </div>
+      <span class="post__head--left">
+        <%= link_to @question.user.name, user_path(@question.user.id), class: "note__name-link" %> さんの質問
+      </span>
+      <span class="post__head--right">更新日：<%= @question.updated_at.strftime('%Y/%m/%d') %></span>
+    </div>
+
+    <div class="post__body question__body">
+      <%= safe_join(@question.body.split("\n"),tag(:br))%>
+    </div>
+    <!-- questionここまで -->
+
+    <!-- answerここから -->
+    <% @question.answers.each do |answer| %>
+      <div class="post__head post__head--answer">
+        <div class="post__head--trim">
+          <%= attachment_image_tag answer.user, :profile_image, fallback: "no_image.jpg", class:"post__head--trim-img"; %>
+        </div>
+        <span class="post__head--left">
+          <%= link_to answer.user.name, user_path(answer.user.id), class: "note__name-link" %> さんの回答
+        </span>
+        <span class="post__head--right">回答日：<%= answer.updated_at.strftime('%Y/%m/%d') %></span>
+      </div>
+
+      <div class="post__body">
+        <%= safe_join(answer.body.split("\n"),tag(:br))%>
+      </div>
+
+      <div class="post__unit">
+        <% if answer.user == current_user %>
+          <span class="top__item btn"><%= link_to "回答削除", question_answer_path(answer.question, answer), method: :delete, class:"top__text" %></span>
+        <% end %>
+      </div>
     <% end %>
+    <!-- answerここまで -->
   </div>
 </div>
-<!-- answerここまで -->
+
+<!-- answer作成ここから -->
+<%= form_with(model:[@question, @answer], local:true) do |f| %>
+<div class="area">
+  <div class="edit">
+    <div class="edit__item">
+      <label class="edit__label">回答作成</label>
+      <div><%= f.text_area :body, class: "edit__body", wrap:"hard" %></div>
+    </div>
+
+    <div class="edit__item">
+      <%= f.submit '回答', class:"edit__btn" %>
+    </div>
+  </div>
+</div>
+<% end %>
+<!-- answer作成ここまで -->

@@ -1,31 +1,38 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
 
   def show
     @user = User.find(params[:id])
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def update
-  end
-  
-  def following
     @user = User.find(params[:id])
-    @users = @user.following
-    render 'show'
+    if @user.update(user_params)
+      flash[:notice] = "編集しました"
+      redirect_to user_path(@user.id)
+    else
+      render 'edit'
+    end
   end
-  
+
+  def followings
+    user = User.find(params[:id])
+    @users = user.following
+  end
+
   def followers
-    @user = User.find(params[:id])
-    @users = @user.followers
-    render 'show'
+    user = User.find(params[:id])
+    @users = user.followers
   end
-  
+
   private
-  
+
   def user_params
-    params.require(:user).permit(:name, :introduction)
+    params.require(:user).permit(:name, :introduction, :profile_image)
   end
 
 end

@@ -1,22 +1,20 @@
-<h1>質問編集</h1>
+<div class="top">
+  <div class="top__item btn">
+    <%= link_to 'Back', question_path(@question.id), class:"top__text" %>
+  </div>
+</div>
+
 <%= form_with model:@question, local:true do |question| %>
-<div>
-  <div>
-    <label>タイトル</label>
-    <div>
-      <%= question.text_field :title %>
+<div class="area">
+  <div class="edit">
+    <div class="edit__item">
+      <label class="edit__label">質問文</label>
+      <div><%= question.text_area :body, class: "edit__body", wrap:"hard" %></div>
     </div>
-  </div>
-  
-  <div>
-    <label>本文</label>
-    <div>
-      <%= question.text_area :body %>
+
+    <div class="edit__item">
+      <%= question.submit '更新', class:"edit__btn" %>
     </div>
-  </div>
-  
-  <div>
-    <%= question.submit '更新', class:"" %>
   </div>
 </div>
 <% end %>

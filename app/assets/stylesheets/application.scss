@@ -13,3 +13,150 @@
  *= require_tree .
  *= require_self
  */
+ @import 'font-awesome-sprockets';
+ @import 'font-awesome';
+ @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f1f1f1;
+}
+
+//
+// header部分ここから
+//
+.header {
+  width: 100%;
+  height: 80px;
+  padding: 15px 0;
+  margin: 0 auto;
+  position: relative;
+  background-color: #1d3557;
+  border-bottom: 2px solid #014f86s;
+
+  &__nav {
+    width: 90%;
+    height: 50px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo {
+    text-decoration: none;
+  }
+
+  &__logo-text {
+    font-size: 18px;
+    text-decoration: none;
+    color: #fff;
+    font-family: 'Lobster', cursive;
+  }
+
+  &__logo-text:hover {
+    color: #c6ac8f;
+  }
+
+  &__menu {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+  }
+
+  &__list {
+    margin-left: 20px;
+  }
+
+  &__link {
+    font-size: 15px;
+    text-decoration: none;
+  }
+
+}
+
+.header__link:link, .header__link:visited, .header__link:active {
+  color: #fff;
+}
+
+.header__link:hover {
+  color: #c6ac8f;
+}
+
+.fa-home {
+  color: #fff;
+}
+
+//
+// main部分ここから
+//
+.main {
+
+}
+
+// main部分ここまで
+
+.heart {
+  text-decoration: none;
+  color: #E85A70;
+}
+
+.confim-text {
+  margin: 5px 0 5px 0;
+}
+
+
+// homeページ
+.container {
+  width: 100%;
+  height: auto;
+  padding: 200px 0;
+  background-image: image-url("top5.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+
+  &__top {
+    width: 30%;
+    height: 120px;
+    margin: 0 auto;
+    padding: 30px 0;
+    background:rgba(192,192,192,0.3);
+  }
+
+  &__text {
+    color: #fff;
+    font-size: 15px;
+    text-align: center;
+  }
+
+  &__header {
+    color: #ff9900;
+    font-size: 30px;
+    text-align: center;
+    font-family: 'Lobster', cursive;
+  }
+
+  &__link {
+    width: 30%;
+    height: 100px;
+    margin: 0 auto;
+    font-size: 18px;
+    text-align: center;
+    padding: 30px 0;
+    background:rgba(192,192,192,0.5);
+  }
+
+  &__btn {
+    text-decoration: none;
+    color: #fff;
+    background-color: #0066ff;
+    border-radius: 100vh;
+    padding: 8px 16px;
+    margin-left: 20px;
+  }
+}

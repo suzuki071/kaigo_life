@@ -1,1 +1,30 @@
-<h1>マイページ編集</h1>
+<div class="top">
+  <div class="top__item btn">
+    <%= link_to 'Back', user_path(current_user), class:"top__text" %>
+  </div>
+</div>
+
+<%= form_with model:@user, local:true do |user| %>
+<div class="area">
+  <div class="edit">
+    <div class="edit__item">
+      <label class="edit__label">ユーザ画像</label>
+      <%= user.attachment_field :profile_image, class: "edit__text" %>
+    </div>
+
+    <div class="edit__item">
+      <label class="edit__label">ユーザ名</label>
+      <%= user.text_field :name, class: "edit__text" %>
+    </div>
+
+    <div class="edit__item">
+      <label class="edit__label">自己紹介</label>
+      <div><%= user.text_field :introduction, class: "edit__text" %></div>
+    </div>
+
+    <div class="edit__item">
+      <%= user.submit '更新', class:"edit__btn" %>
+    </div>
+  </div>
+</div>
+<% end %>

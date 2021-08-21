@@ -1,14 +1,74 @@
-<h1>マイページ</h1>
-<div class="follower">
-  <%= link_to followers_user_path(@user.id) do %>
-    <h5>フォロワー<%= @user.followers.count %>人</h5>
+<div class="top">
+  <h2 class="top__title">プロフィール</h2>
+  <% if @user.id == current_user.id %>
+    <div class="top__item btn">
+      <%= link_to '編集', edit_user_path(@user.id), class:"top__text" %>
+    </div>
   <% end %>
 </div>
-<div class="follow">
-  <%= link_to following_user_path(@user.id) do %>
-    <h5>フォロー<%= @user.following.count %>人</h5>
+
+<div class="area">
+  <!-- ユーザー情報ここから -->
+  <div class="user-info">
+    <div class="user-info__icon">
+      <div class="user-info__icon--trim">
+        <%= attachment_image_tag @user, :profile_image, format: 'jpeg',fallback: "no_image.jpg", class:"user-info--trim-img", size:"100x100" %>
+      </div>
+    </div>
+
+    <div class="user-info__text">
+      <ul>
+        <li class="user-info__list"><%= @user.name %></li>
+        <li class="user-info__list"><%= @user.introduction %></li>
+        <li class="user-info__list user-info__follow">
+          <div class="user-info__follow--follower">
+            <%= link_to followers_user_path(@user.id), class:"user-info__link" do %>
+              <span>フォロワー<%= @user.followers.count %>人</span>
+            <% end %>
+          </div>
+          <div class="user-info__follow--follow">
+            <%= link_to followings_user_path(@user.id), class:"user-info__link" do %>
+              <span>フォロー<%= @user.following.count %>人</span>
+            <% end %>
+          </div>
+        </li>
+        <li class="user-info__list"><%= render "follow_form", user:@user %></li>
+      </ul>
+    </div>
+  </div>
+  <!-- ユーザー情報ここまで -->
+
+  <div class="top">
+    <h2 class="top__title"><%= @user.name %> の投稿一覧</h2>
+    <% if @user.id == current_user.id %>
+      <div class="top__item btn">
+        <%= link_to '新規作成', new_report_path, class:"top__text" %>
+      </div>
+    <% end %>
+  </div>
+  <% @user.reports.each do |report| %>
+    <div class="note">
+      <div class="note__head">
+        <%= link_to report.title, report_path(report.id), class: "note__title" %>
+      </div>
+
+      <div class="note__main">
+        <%= truncate(report.body, omission: '...', separator: ' ') %>
+      </div>
+
+      <div class="note__foot">
+        <div id="report_<%= report.id %>" class="note__foot-left">
+          <%= render 'reports/report', report: report %>
+        </div>
+        <div class="note__foot-center">
+          <span class="note__name">
+            <%= report.user.name %>
+          </span>
+        </div>
+        <div class="note__foot-right">
+          <span class="note__date"><%= report.updated_at.strftime('%Y/%m/%d') %></span>
+        </div>
+      </div>
+    </div>
   <% end %>
-</div>
-<div>
-  <%= render "follow_form" %>
 </div>

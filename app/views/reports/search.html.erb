@@ -1,13 +1,28 @@
-<h2>検索結果 "<%= @keyword %>"</h2>
-<di>
-  <ul>
-    <% @reports.each do |reports| %>
-    <li>
-      <%= link_to report_path(reports.id) do %>
-        <%= reports.title %><br>
-        <%= reports.body %>
-      <% end %>
-    </li>
-    <% end %>
-  </ul>
-</di>
+<div class="top">
+  <h2 class="top__title">検索結果 "<%= @keyword %>"</h2>
+</div>
+<div class="area">
+  <% @reports.each do |reports| %>
+    <div class="note">
+      <div class="note__head">
+        <%= link_to reports.title, report_path(reports.id), class: "note__title" %>
+      </div>
+
+      <div class="note__main">
+        <%= truncate(reports.body, omission: '...', separator: ' ') %>
+      </div>
+
+      <div class="note__foot">
+        <div id="report_<%= reports.id %>" class="note__foot-left">
+          <%= render 'report', report: reports %>
+        </div>
+        <div class="note__foot-center">
+          <span class="note__name"><%= reports.user.name %></span>
+        </div>
+        <div class="note__foot-right">
+          <span class="note__date"><%= reports.user.created_at.strftime('%Y/%m/%d') %></span>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

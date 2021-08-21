@@ -1,32 +1,35 @@
+<div class="top">
+  <h2 class="top__title">お問い合わせ記入</h2>
+</div>
+
 <%= form_with model: @inquiry, url: inquiry_confirm_path, local: true do |inquiry| %>
-<div>
-  <h1>お問い合わせ</h1>
-  
+<div class="area">
   <% if @inquiry.errors.any? %>
     <strong>入力内容にエラーがあります</strong>
-    <ul>
-      <% @inquiry.errors.each do |attr, msg| %>
-      <li><%= msg %></li>
-      <% end %>
-    </ul>
+    <% @inquiry.errors.each do |attr, msg| %>
+      <p><%= msg %></p>
+    <% end %>
   <% end %>
-  
-  <div>
-    <table>
-      <tr>
-        <th>名前<span>(必須)</span></th>
-        <td><%= inquiry.text_field :name %></td>
-      </tr>
-      <tr>
-        <th>メールアドレス<span>(必須)</span></th>
-        <td><%= inquiry.text_field :email %></td>
-      </tr>
-      <tr>
-        <th>お問い合わせ内容</th>
-        <td><%= inquiry.text_area :message %></td>
-      </tr>
-    </table>
-    <%= inquiry.submit '確認', class: '' %>
+
+  <div class="edit">
+    <div class="edit__item">
+      <label class="edit__label">名前<span>(必須)</span></label>
+      <%= inquiry.text_field :name, class: "edit__text" %>
+    </div>
+
+    <div class="edit__item">
+      <label class="edit__label">メールアドレス<span>(必須)</label>
+      <%= inquiry.text_field :email, class: "edit__text" %>
+    </div>
+
+    <div class="edit__item">
+      <label class="edit__label">お問い合わせ内容</label>
+      <div><%= inquiry.text_area :message, class: "edit__body", wrap:"hard" %></div>
+    </div>
+
+    <div class="edit__item">
+      <%= inquiry.submit '確認', class:"edit__btn" %>
+    </div>
   </div>
 </div>
 <% end %>

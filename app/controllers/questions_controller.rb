@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :edit]
 
   def index
     @questions = Question.all
@@ -15,7 +16,9 @@ class QuestionsController < ApplicationController
       flash[:notice] = "投稿しました！"
       redirect_to question_path(@question.id)
     else
-      render 'index'
+      @question = Question.new
+      flash[:alert] = "質問投稿に失敗しました！"
+      render 'new'
     end
 
   end
@@ -27,6 +30,10 @@ class QuestionsController < ApplicationController
 
   def edit
     @question = Question.find(params[:id])
+    if @question.user_id == current_user.id
+    else
+      redirect_to questions_path, alert: '不正なアクセスです。'
+    end
   end
 
   def update
@@ -48,7 +55,7 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:title, :body, :user_id)
+    params.require(:question).permit(:title, :body, :user_id, :question_image)
   end
 
 end
