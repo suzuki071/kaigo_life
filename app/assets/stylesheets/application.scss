@@ -15,6 +15,7 @@
  */
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
+ @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
 * {
   margin: 0;
@@ -49,7 +50,17 @@ body {
 
   &__logo {
     text-decoration: none;
-    // background-color: green;
+  }
+
+  &__logo-text {
+    font-size: 18px;
+    text-decoration: none;
+    color: #fff;
+    font-family: 'Lobster', cursive;
+  }
+
+  &__logo-text:hover {
+    color: #c6ac8f;
   }
 
   &__menu {

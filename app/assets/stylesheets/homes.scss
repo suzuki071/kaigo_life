@@ -4,22 +4,38 @@
 
 .container {
   width: 100%;
-  height: 1000px;
+  height: auto;
   padding: 200px 0;
   // background-color: red;
-  background-image: url(top3.png);
-  background-size: contain;
+  background-image: url(top5.jpg);
+  background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center center;
 
-  &__header {
+  &__top {
     width: 30%;
-    height: 100px;
+    height: 120px;
     margin: 0 auto;
-    font-size: 20px;
-    text-align: center;
     padding: 30px 0;
     background:rgba(192,192,192,0.3);
+  }
+
+  &__text {
+    color: #fff;
+    font-size: 15px;
+    text-align: center;
+  }
+
+  &__header {
+    // width: 30%;
+    // height: 100px;
+    // margin: 0 auto;
+    color: #ff9900;
+    font-size: 30px;
+    text-align: center;
+    font-family: 'Lobster', cursive;
+    // padding: 30px 0;
+    // background:rgba(192,192,192,0.3);
     // background-color: blue;
   }
 

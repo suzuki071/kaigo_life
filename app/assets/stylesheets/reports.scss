@@ -88,6 +88,10 @@
     font-size: 18px;
     text-decoration: none;
     color: #0066ff;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
   }
 
   &__main {

@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get 'inquiry/index'
-  post 'inquiry/confirm'
-  post 'inquiry/thanks'
   devise_for :users, controllers: {registrations: 'users/registrations',sessions: 'users/sessions'}
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'homes#top'
@@ -36,5 +33,9 @@ Rails.application.routes.draw do
   # likesコントローラのルーティング
   post 'like/:id' => 'likes#create', as: 'create_like'
   delete 'like/:id' => 'likes#destroy', as: 'destroy_like'
+  
+  get 'inquiry/index' => 'inquiry#index'
+  post 'inquiry/confirm' => 'inquiry#confirm'
+  post 'inquiry/thanks' => 'inquiry#thanks'
 
 end

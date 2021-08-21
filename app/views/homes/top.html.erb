@@ -1,5 +1,8 @@
 <div class="container">
-  <h1 class="container__header">KAIGO LIFE</h1>
+  <div class="container__top">
+    <p class="container__text">介護の悩み特化型Q&Aサイト</p>
+    <h1 class="container__header">KAIGO LIFE</h1>
+  </div>
   <div class="container__link">
     <%= link_to "新規登録", new_user_registration_path, class:"container__btn" %>
     <% if user_signed_in? %>
