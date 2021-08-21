@@ -108,3 +108,55 @@ body {
 .confim-text {
   margin: 5px 0 5px 0;
 }
+
+
+// homeページ
+.container {
+  width: 100%;
+  height: auto;
+  padding: 200px 0;
+  background-image: image-url("top5.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+
+  &__top {
+    width: 30%;
+    height: 120px;
+    margin: 0 auto;
+    padding: 30px 0;
+    background:rgba(192,192,192,0.3);
+  }
+
+  &__text {
+    color: #fff;
+    font-size: 15px;
+    text-align: center;
+  }
+
+  &__header {
+    color: #ff9900;
+    font-size: 30px;
+    text-align: center;
+    font-family: 'Lobster', cursive;
+  }
+
+  &__link {
+    width: 30%;
+    height: 100px;
+    margin: 0 auto;
+    font-size: 18px;
+    text-align: center;
+    padding: 30px 0;
+    background:rgba(192,192,192,0.5);
+  }
+
+  &__btn {
+    text-decoration: none;
+    color: #fff;
+    background-color: #0066ff;
+    border-radius: 100vh;
+    padding: 8px 16px;
+    margin-left: 20px;
+  }
+}
