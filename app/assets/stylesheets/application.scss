@@ -37,7 +37,7 @@ body {
   margin: 0 auto;
   position: relative;
   background-color: #1d3557;
-  border-bottom: 2px solid #014f86s;
+  border-bottom: 2px solid #014f86;
 
   &__nav {
     width: 90%;
@@ -158,5 +158,9 @@ body {
     border-radius: 100vh;
     padding: 8px 16px;
     margin-left: 20px;
+  }
+
+  &__btn:hover {
+    background-color: #0055ff;
   }
 }
