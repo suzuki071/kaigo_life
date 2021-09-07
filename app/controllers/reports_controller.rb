@@ -61,7 +61,8 @@ class ReportsController < ApplicationController
   end
 
   def rank
-    @all_ranks = Report.create_all_ranks
+    # @all_ranks = Report.create_all_ranks
+    @all_ranks = Report.includes(:liked_users).sort {|a,b| b.liked_users.size <=> a.liked_users.size}
   end
 
   private

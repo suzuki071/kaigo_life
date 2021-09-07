@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :questions, dependent: :destroy
   has_many :answers, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :liked_reports, through: :likes, source: :report
 
   def liked_by?(report_id)
     likes.where(report_id: report_id).exists?
