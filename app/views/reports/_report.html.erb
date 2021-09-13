@@ -6,4 +6,5 @@
     <strong><%= link_to '', create_like_path(report), method: :POST, remote: true, class:"far fa-heart heart" %> <%= report.likes.count %></strong>
   <% end %>
 <% else %>
+  <strong><span class="far fa-heart heart"></span> <%= report.likes.count %></strong>
 <% end %>
