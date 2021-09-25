@@ -52,6 +52,10 @@
   margin-left: 20px;
 }
 
+.btn:hover {
+  background-color: #12cc4b;
+}
+
 .top__text:link, .top__text:visited, .top__text:active {
   color: #000;
 }
@@ -234,7 +238,7 @@
     margin-top: 10px;
     width: 90%;
     height: 500px;
-    
+
     &--ans {
       margin-top: 10px;
       width: 90%;
