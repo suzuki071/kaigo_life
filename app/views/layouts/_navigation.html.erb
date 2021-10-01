@@ -1,29 +1,29 @@
 <nav class="header__nav">
   <!-- ロゴ -->
-  <div class="header__logo">
+  <p class="header__logo">
     <%= link_to root_path, class:"header__logo-text" do %>
       KAIGO LIFE
     <% end %>
-  </div>
+  </p>
 
-  <div class="header__menu">
+  <ul class="header__menu">
     <% if user_signed_in? %>
-      <div class="header__list"><%= link_to "Q&A一覧", questions_path, class:"header__link" %></div>
-      <div class="header__list"><%= link_to "投稿一覧", reports_path, class:"header__link" %></div>
-      <div class="header__list"><%= link_to "マイページ", user_path(current_user), class:"header__link" %></div>
-      <div class="header__list"><%= link_to "お問い合わせ", inquiry_index_path, class:"header__link" %></div>
-      <div class="header__list"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"header__link" %></div>
-      <div class="header__list">
+      <li class="header__list"><%= link_to "Q&A一覧", questions_path, class:"header__link" %></li>
+      <li class="header__list"><%= link_to "投稿一覧", reports_path, class:"header__link" %></li>
+      <li class="header__list"><%= link_to "マイページ", user_path(current_user), class:"header__link" %></li>
+      <li class="header__list"><%= link_to "お問い合わせ", inquiry_index_path, class:"header__link" %></li>
+      <li class="header__list"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"header__link" %></li>
+      <li class="header__list">
         <%= form_with url: search_reports_path, method: :get, local: true do |f| %>
           <%= f.text_field :keyword %>
           <%= f.submit "検索" %>
         <% end %>
-      </div>
+      </li>
     <% else %>
-      <div class="header__list"><%= link_to "Q&A一覧", questions_path, class:"header__link" %></div>
-      <div class="header__list"><%= link_to "投稿一覧", reports_path, class:"header__link" %></div>
-      <div class="header__list"><%= link_to "新規登録", new_user_registration_path, class:"header__link" %></div>
-      <div class="header__list"><%= link_to "ログイン", new_user_session_path, class:"header__link" %></div>
+      <li class="header__list"><%= link_to "Q&A一覧", questions_path, class:"header__link" %></li>
+      <li class="header__list"><%= link_to "投稿一覧", reports_path, class:"header__link" %></li>
+      <li class="header__list"><%= link_to "新規登録", new_user_registration_path, class:"header__link" %></li>
+      <li class="header__list"><%= link_to "ログイン", new_user_session_path, class:"header__link" %></li>
     <% end %>
-  </div>
+  </ul>
 </nav>
