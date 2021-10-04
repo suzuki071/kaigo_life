@@ -39,7 +39,7 @@
   <!-- ユーザー情報ここまで -->
 
   <div class="top">
-    <h2 class="top__title"><%= @user.name %> の投稿一覧</h2>
+    <h2 class="top__title"><%= @user.name %> の投稿</h2>
     <% if @user.id == current_user.id %>
       <div class="top__item btn">
         <%= link_to '新規作成', new_report_path, class:"top__text" %>
