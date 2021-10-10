@@ -23,14 +23,14 @@
       </p>
 
       <div class="note__foot">
-        <div id="report_<%= report.id %>" class="note__foot-left">
+        <p id="report_<%= report.id %>" class="note__foot-left">
           <%= render 'report', report: report %>
-        </div>
-        <div class="note__foot-center">
+        </p>
+        <p class="note__foot-center">
           <span class="note__name">
             <%= link_to report.user.name, user_path(report.user.id), class: "note__name-link" %>
           </span>
-        </div>
+        </p>
         <div class="note__foot-right">
           <span class="note__date"><%= report.updated_at.strftime('%Y/%m/%d') %></span>
         </div>
