@@ -1,11 +1,10 @@
 
-<% if current_user.following?(user) %>
-  <%= form_for(current_user, url: relationship_path(user), method: :delete, remote: true) do |f| %>
-    <%= f.submit "フォロー解除", class: "follow-user__btn-red" %>
-  <% end %>
-<% else %>
-  <%= form_for(current_user, url: relationships_path, method: :post, remote: true) do |f| %>
-    <%= hidden_field_tag :following_id, user.id %>
-    <%= f.submit "フォローする", class: "follow-user__btn-blue" %>
-  <% end %>
+<% if user_signed_in? && user != current_user %>
+  <div id="follow_form">
+    <% if current_user.following?(user) %>
+      <%= render "unfollow", user: user %>
+    <% else %>
+      <%= render "follow", user: user %>
+    <% end %>
+  </div>
 <% end %>
