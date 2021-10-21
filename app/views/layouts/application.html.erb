@@ -22,7 +22,15 @@
       <%= yield %>
     </main>
 
-    <footer></footer>
+    <footer class="footer">
+      <section class="secondary">
+        <ul class="sitenavi">
+          <li><%= link_to "お問い合わせ", inquiry_index_path, class:"footer_link" %></li>
+          <!--<li><a href="#">プライバシーポリシー</a></li>-->
+        </ul>
+        <p class="copyright">Copyright WEBSITE,Inc. All rights reserved.</p>
+      </section>
+    </footer>
 
   </body>
 </html>
