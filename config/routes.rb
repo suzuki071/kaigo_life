@@ -9,13 +9,18 @@ Rails.application.routes.draw do
     member do
       get :followings, :followers
     end
+    
+    resources :relationships, only: [:create, :destroy] do
+      get :followings, on: :member
+      get :followers, on: :member
+    end
   end
 
   # relationshipsコントローラのルーティング
-  resources :relationships, only: [:create, :destroy] do
-    get :followings, on: :member
-    get :followers, on: :member
-  end
+  # resources :relationships, only: [:create, :destroy] do
+  #   get :followings, on: :member
+  #   get :followers, on: :member
+  # end
 
   # reportsコントローラのルーティング
   resources :reports, only: [:new, :index, :create, :show, :edit, :update, :destroy] do
