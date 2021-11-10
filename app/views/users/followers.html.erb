@@ -16,8 +16,16 @@
         </span>
       </div>
       <div class="follow-user__right">
-        <% unless users == current_user %>
-         <span><%= render "follow_form", user: users %></span>
+        <% if users != current_user %>
+          <% if users.is_followed_by?(current_user) %>
+            <%=link_to user_relationship_path(users), method: :delete do %>
+              <button type="button" class="follow-user__btn-red">フォロー解除</button>
+            <% end %>
+          <% else %>
+            <%=link_to user_relationships_path(users), method: :post do %>
+              <button type="button" class="follow-user__btn-blue">フォロー</button>
+            <% end %>
+          <% end %>
         <% end %>
       </div>
     </div>

@@ -6,14 +6,13 @@ Rails.application.routes.draw do
 
   # usersコントローラのルーティング
   resources :users do
-    member do
-      get :followings, :followers
-    end
+    # member do
+    #   get :followings, :followers
+    # end
     
-    resources :relationships, only: [:create, :destroy] do
+    resources :relationships, only: [:create, :destroy]
       get :followings, on: :member
       get :followers, on: :member
-    end
   end
 
   # relationshipsコントローラのルーティング

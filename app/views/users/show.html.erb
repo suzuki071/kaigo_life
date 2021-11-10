@@ -28,11 +28,24 @@
           </div>
           <div class="user-info__follow--follow">
             <%= link_to followings_user_path(@user.id), class:"user-info__link" do %>
-              <span>フォロー<%= @user.following.count %>人</span>
+              <span>フォロー<%= @user.followings.count %>人</span>
             <% end %>
           </div>
         </li>
-        <li class="user-info__list"><%= render "follow_form", user: @user %></li>
+        <li class="user-info__list">
+          <% if @user == current_user %>
+          <% else %>
+            <% if @user.is_followed_by?(current_user) %>
+              <%=link_to user_relationship_path(@user), method: :delete do %>
+                <button type="button" class="follow-user__btn-red">フォロー解除</button>
+              <% end %>
+            <% else %>
+              <%=link_to user_relationships_path(@user), method: :post do %>
+                <button type="button" class="follow-user__btn-blue">フォロー</button>
+              <% end %>
+            <% end %>
+          <% end %>
+        </li>
       </ul>
     </div>
   </div>
