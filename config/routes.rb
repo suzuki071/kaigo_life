@@ -10,7 +10,8 @@ Rails.application.routes.draw do
     #   get :followings, :followers
     # end
     
-    resources :relationships, only: [:create, :destroy]
+    resources :relationships, only: [:destroy]
+      post 'relationships/:id' => 'relationships#create', as: 'relationships'
       get :followings, on: :member
       get :followers, on: :member
   end
