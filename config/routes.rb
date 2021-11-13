@@ -6,21 +6,11 @@ Rails.application.routes.draw do
 
   # usersコントローラのルーティング
   resources :users do
-    # member do
-    #   get :followings, :followers
-    # end
-    
     resources :relationships, only: [:destroy]
       post 'relationships/:id' => 'relationships#create', as: 'relationships'
       get :followings, on: :member
       get :followers, on: :member
   end
-
-  # relationshipsコントローラのルーティング
-  # resources :relationships, only: [:create, :destroy] do
-  #   get :followings, on: :member
-  #   get :followers, on: :member
-  # end
 
   # reportsコントローラのルーティング
   resources :reports, only: [:new, :index, :create, :show, :edit, :update, :destroy] do
