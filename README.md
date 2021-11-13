@@ -40,5 +40,4 @@ https://docs.google.com/spreadsheets/d/1wZjskwKD57eOKDvT0jcXQTS8BHgvpS4h1U4L8JKz
 - IDE：Cloud9
 
 ## 使用素材
-- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
-- 使用しない場合は、使用素材の項目をREADMEから削除してください。
+- 画像素材「ぱくたそ」(https://www.pakutaso.com)
