@@ -23,8 +23,8 @@
       width: 50px;
       height: 50px;
       padding: 0;
-      background-color: #12c74b;
       border: solid 1px #12c74b;
+      background-color: #12c74b;
       text-align: center;
     }
   }
@@ -45,11 +45,14 @@
 }
 
 .btn {
-  color: #fff;
   background-color: #12c74b;
   border-radius: 100vh;
   padding: 8px 16px;
   margin-left: 20px;
+}
+
+.btn:hover {
+  background-color: #23c74b;
 }
 
 .top__text:link, .top__text:visited, .top__text:active {
@@ -234,6 +237,12 @@
     margin-top: 10px;
     width: 90%;
     height: 500px;
+
+    &--ans {
+      margin-top: 10px;
+      width: 90%;
+      height: 200px;
+    }
   }
 
   &__btn {

@@ -14,23 +14,23 @@
 <div class="area">
   <% @reports.each do |report| %>
     <div class="note">
-      <div class="note__head">
+      <p class="note__head">
         <%= link_to report.title, report_path(report.id), class: "note__title" %>
-      </div>
+      </p>
 
-      <div class="note__main">
+      <p class="note__main">
         <%= truncate(report.body, omission: '...', separator: ' ') %>
-      </div>
+      </p>
 
       <div class="note__foot">
-        <div id="report_<%= report.id %>" class="note__foot-left">
+        <p id="report_<%= report.id %>" class="note__foot-left">
           <%= render 'report', report: report %>
-        </div>
-        <div class="note__foot-center">
+        </p>
+        <p class="note__foot-center">
           <span class="note__name">
             <%= link_to report.user.name, user_path(report.user.id), class: "note__name-link" %>
           </span>
-        </div>
+        </p>
         <div class="note__foot-right">
           <span class="note__date"><%= report.updated_at.strftime('%Y/%m/%d') %></span>
         </div>

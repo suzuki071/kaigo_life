@@ -3,20 +3,20 @@
 </div>
 
 <div class="area">
-  <% @users.each do |user| %>
+  <% @users.each do |users| %>
     <div class="follow-user">
         <div class="follow-user__left">
-          <%= attachment_image_tag user, :profile_image, fallback: "no_image.jpg", class:"follow-user__img", size:"10x10" %>
+          <%= attachment_image_tag users, :profile_image, fallback: "no_image.jpg", class:"follow-user__img", size:"10x10" %>
         </div>
         <div class="follow-user__center">
           <span>
-            <%= link_to user_path(user), class:"follow-user__name" do %>
-              <%= user.name %>
+            <%= link_to user_path(users), class:"follow-user__name" do %>
+              <%= users.name %>
             <% end %>
           </span>
         </div>
-        <div class="follow-user__right">
-          <span><%= render "follow_form", user:user %></span>
+        <div class="follow-user__right" id="follow_form_<%= users.id %>">
+          <%= render 'follow_form', users: users %>
         </div>
     </div>
   <% end %>

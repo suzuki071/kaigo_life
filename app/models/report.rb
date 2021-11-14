@@ -2,6 +2,7 @@ class Report < ApplicationRecord
 
   belongs_to :user
   has_many :likes, dependent: :destroy
+  has_many :liked_users, through: :likes, source: :user
   attachment :report_image
 
   #バリデーション
@@ -9,7 +10,7 @@ class Report < ApplicationRecord
   validates :body, presence: true
 
   def self.create_all_ranks
-    Report.find(Like.group(:report_id).order('count(report_id) desc').limit(10).pluck(:report_id))
+    Report.includes(:liked_users).sort {|a,b| b.liked_users.size <=> a.liked_users.size}
   end
 
 end

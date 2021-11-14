@@ -28,18 +28,20 @@
           </div>
           <div class="user-info__follow--follow">
             <%= link_to followings_user_path(@user.id), class:"user-info__link" do %>
-              <span>フォロー<%= @user.following.count %>人</span>
+              <span>フォロー<%= @user.followings.count %>人</span>
             <% end %>
           </div>
         </li>
-        <li class="user-info__list"><%= render "follow_form", user:@user %></li>
+        <li class="user-info__list" id="follow_form_<%= @user.id %>">
+          <%= render 'follow_form', users: @user %>
+        </li>
       </ul>
     </div>
   </div>
   <!-- ユーザー情報ここまで -->
 
   <div class="top">
-    <h2 class="top__title"><%= @user.name %> の投稿一覧</h2>
+    <h2 class="top__title"><%= @user.name %> の投稿</h2>
     <% if @user.id == current_user.id %>
       <div class="top__item btn">
         <%= link_to '新規作成', new_report_path, class:"top__text" %>
